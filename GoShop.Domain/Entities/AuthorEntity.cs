@@ -9,8 +9,8 @@ namespace Library.Domain.Entities;
 public class AuthorEntity
 {
     public int Id { get; set; }
-    public string Name { get; set; }
-
-    // Navigation property
-    public List<BookEntity> Books { get; set; } = new List<BookEntity>();  // Initialize to avoid null
+    public string Name { get; set; } = default!;
+    public DateTime? BirthDate { get; set; } 
+    public string Country { get; set; } = default!;
+    public List<BookEntity> Books { get; set; } = new List<BookEntity>(); 
 }
