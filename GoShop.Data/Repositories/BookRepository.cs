@@ -11,19 +11,16 @@ using System.Threading.Tasks;
 public class BookRepository : IBookRepository
 {
     private readonly LibraryDb _context;
-
     public BookRepository(LibraryDb context)
     {
         _context = context;
     }
-
     public async Task<List<BookEntity>> GetAllAsync(CancellationToken cancellationToken)
     {
         return await _context.BookEntities
             .AsNoTracking()
             .ToListAsync(cancellationToken);
     }
-
     public async Task<List<BookEntity>> GetAllAsync(BookFiltersModel model, CancellationToken cancellationToken)
     {
         var query = GetQueryByFilters(model);
@@ -35,13 +32,11 @@ public class BookRepository : IBookRepository
             .Take(model.Count ?? 150)
             .ToListAsync(cancellationToken);
     }
-
     public async Task<int> GetCountByFiltersAsync(BookFiltersModel filters, CancellationToken cancellationToken)
     {
         var query = GetQueryByFilters(filters);
         return await query.CountAsync(cancellationToken);
     }
-
     private IQueryable<BookEntity> GetQueryByFilters(BookFiltersModel filters)
     {
         var query = _context.BookEntities.AsQueryable();
@@ -73,7 +68,6 @@ public class BookRepository : IBookRepository
 
         return query;
     }
-
     private static IQueryable<BookEntity> SortBy(IQueryable<BookEntity> query, string sortBy)
     {
         return sortBy switch
@@ -94,5 +88,41 @@ public class BookRepository : IBookRepository
             "categoryid-asc" => query.OrderBy(x => x.CategoryId),
             _ => query.OrderByDescending(x => x.Id)
         };
+    }
+    public async Task<BookEntity> CreateBookAsync(BookEntity book, CancellationToken cancellationToken)
+    {
+        _context.BookEntities.Add(book);
+        await _context.SaveChangesAsync(cancellationToken);
+        return book;
+    }
+    public async Task<BookEntity?> UpdateBookAsync(int id, BookEntity updatedBook, CancellationToken cancellationToken)
+    {
+        var book = await _context.BookEntities.FindAsync(new object[] { id }, cancellationToken);
+        if (book == null) return null;
+
+        book.Title = updatedBook.Title;
+        book.Pages = updatedBook.Pages;
+        book.PublicationDate = updatedBook.PublicationDate;
+        book.Description = updatedBook.Description;
+        book.AuthorId = updatedBook.AuthorId;
+        book.CategoryId = updatedBook.CategoryId;
+
+        await _context.SaveChangesAsync(cancellationToken);
+        return book;
+    }
+    public async Task<bool> DeleteBookAsync(int id, CancellationToken cancellationToken)
+    {
+        var book = await _context.BookEntities.FindAsync(new object[] { id }, cancellationToken);
+        if (book == null) return false;
+
+        _context.BookEntities.Remove(book);
+        await _context.SaveChangesAsync(cancellationToken);
+        return true;
+    }
+    public async Task<BookEntity?> GetBookByIdAsync(int id, CancellationToken cancellationToken)
+    {
+        return await _context.BookEntities
+            .AsNoTracking()
+            .FirstOrDefaultAsync(b => b.Id == id, cancellationToken);
     }
 }
