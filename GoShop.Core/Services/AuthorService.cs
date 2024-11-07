@@ -57,7 +57,7 @@ public class AuthorService : IAuthorService
     public async Task<AuthorEntity> UpdateAsync(int id, AuthorEntity updatedEntity, CancellationToken cancellationToken = default)
     {
         try
-        {
+        { 
             return await _repository.UpdateAuthorAsync(id, updatedEntity, cancellationToken);
         }
         catch (Exception ex)

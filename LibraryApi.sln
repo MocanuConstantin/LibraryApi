@@ -3,22 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryApi", "LibraryApi\LibraryApi.csproj", "{A5914310-A145-4FC3-A390-9D384A9E31EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Api", "LibraryApi\Library.Api.csproj", "{A5914310-A145-4FC3-A390-9D384A9E31EE}"
 	ProjectSection(ProjectDependencies) = postProject
 		{DB118391-6241-48A7-AC77-C2F7ED5BE2C5} = {DB118391-6241-48A7-AC77-C2F7ED5BE2C5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Data", "GoShop.Data\Library.Data.csproj", "{6662E828-4482-4904-9770-EBB6F80E9077}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Data", "GoShop.Data\Library.Data.csproj", "{6662E828-4482-4904-9770-EBB6F80E9077}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B690255B-EE87-44B3-A59F-E93BCA729B87} = {B690255B-EE87-44B3-A59F-E93BCA729B87}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Domain", "GoShop.Domain\Library.Domain.csproj", "{B690255B-EE87-44B3-A59F-E93BCA729B87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Domain", "GoShop.Domain\Library.Domain.csproj", "{B690255B-EE87-44B3-A59F-E93BCA729B87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Core", "GoShop.Core\Library.Core.csproj", "{DB118391-6241-48A7-AC77-C2F7ED5BE2C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Core", "GoShop.Core\Library.Core.csproj", "{DB118391-6241-48A7-AC77-C2F7ED5BE2C5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6662E828-4482-4904-9770-EBB6F80E9077} = {6662E828-4482-4904-9770-EBB6F80E9077}
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryApi.Test", "LibraryApi.Test\LibraryApi.Test.csproj", "{76A2C705-3B02-4E0A-812F-4E9DA734E5E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{DB118391-6241-48A7-AC77-C2F7ED5BE2C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB118391-6241-48A7-AC77-C2F7ED5BE2C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB118391-6241-48A7-AC77-C2F7ED5BE2C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76A2C705-3B02-4E0A-812F-4E9DA734E5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A2C705-3B02-4E0A-812F-4E9DA734E5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A2C705-3B02-4E0A-812F-4E9DA734E5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A2C705-3B02-4E0A-812F-4E9DA734E5E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
