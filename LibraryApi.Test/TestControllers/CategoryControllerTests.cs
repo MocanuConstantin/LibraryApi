@@ -22,19 +22,22 @@ namespace LibraryApi.Test.TestControllers
             _controller = new CategoryController(_mockService.Object);
         }
 
-        //[Fact]
-        //public async Task GetAll_ReturnsListOfCategories()
-        //{
-        //    var categories = new List<CategoryEntity> { new CategoryEntity { Name = "Category 1" } };
-        //    _mockService.Setup(service => service.GetAllAsync(It.IsAny<CategoryFiltersModel>(), It.IsAny<CancellationToken>()))
-        //        .ReturnsAsync(categories);
+        [Fact]
+        public async Task GetAll_ReturnsOkResult_WithListOfCategories()
+        {
+            // Arrange
+            var categories = new List<CategoryEntity> { new CategoryEntity { Id = 1, Name = "Category 1" } };
+            _mockService.Setup(service => service.GetAllAsync(It.IsAny<CategoryFiltersModel>(), It.IsAny<CancellationToken>()))
+                        .ReturnsAsync(categories);
 
-        //    var result = await _controller.GetAll(new CategoryFiltersModel(), CancellationToken.None) as ActionResult<List<CategoryEntity>>;
+            // Act
+            var result = await _controller.GetAll(new CategoryFiltersModel(), CancellationToken.None);
 
-        //    Assert.IsType<OkObjectResult>(result.Result);
-        //    var okResult = result.Result as OkObjectResult;
-        //    Assert.IsType<List<CategoryEntity>>(okResult.Value);
-        //}
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedCategories = Assert.IsType<List<CategoryEntity>>(okResult.Value);
+            Assert.Single(returnedCategories);
+        }
 
         [Fact]
         public async Task GetCategoryById_ReturnsCategory()

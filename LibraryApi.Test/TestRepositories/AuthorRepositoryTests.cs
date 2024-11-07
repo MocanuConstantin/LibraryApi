@@ -16,7 +16,7 @@ public class AuthorRepositoryTests
     private LibraryDb CreateInMemoryDb()
     {
         var options = new DbContextOptionsBuilder<LibraryDb>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString()) // Unique database name to avoid conflicts
+            .UseInMemoryDatabase(Guid.NewGuid().ToString()) 
             .Options;
         return new LibraryDb(options);
     }
