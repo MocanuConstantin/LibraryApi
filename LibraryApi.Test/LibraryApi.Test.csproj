@@ -24,7 +24,7 @@
     <ProjectReference Include="..\GoShop.Core\Library.Core.csproj" />
     <ProjectReference Include="..\GoShop.Data\Library.Data.csproj" />
     <ProjectReference Include="..\GoShop.Domain\Library.Domain.csproj" />
-    <ProjectReference Include="..\LibraryApi\Library.Api.csproj" />
+    <ProjectReference Include="..\LibraryApi\LibraryApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
